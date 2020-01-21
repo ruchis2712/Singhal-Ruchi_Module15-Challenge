@@ -1,0 +1,150 @@
+###########################################################################
+# PART1 of challenge
+## MPG Regression
+###########################################################################
+
+- We have analyzed the conitnuous dependent variable 'mpg' and it's relationship to the other independent continuous variables (vehicle weight, vehicle height, spoiler angle, and ground clearance) in the dataset using Multiple Regression. 
+
+- The objective is to see how many of these independent variables can be used to predict / forecast the dependent 'mpg' of the prototypes
+
+- We have assumed a significance level of 5% or .05
+
+- The null hypothesis is that "there is no significant linear relationship, and the dependent value would be determined by random chance and error. Therefore, our linear model would be a flat line with a slope of 0"
+
+- The null hypothesis will be accepted at p-values >= .05
+
+OBSERVATIONS:
+
+- On running the model the following values were observed
+
+* R-squared:  0.7032
+* p-value: 2.277e-11
+
+Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.076e+02  1.576e+01  -6.823 1.87e-08 ***
+vlength      6.240e+00  6.609e-01   9.441 3.05e-12 ***
+vwt          1.277e-03  6.948e-04   1.837   0.0728 .  
+spoilerang   8.031e-02  6.656e-02   1.207   0.2339    
+grndc        3.659e+00  5.394e-01   6.784 2.13e-08 ***
+
+- The model looks to be an ok fit based on the R-squared value of 0.7032. The model seems to be able to predict the mpg of MechaCar prototypes about 70% of the time correctly, which though is good but not the most effective
+
+- The p-value (2.277e-11) < .05 means that the null hypothesis, that the slope of the linear model is zero, can be rejected.
+
+- In the summary output, each Pr(>|t|) value represents the probability that each coefficient contributes a random amount of variance to the linear model. 
+According to our results, Vehicle Length,  Ground Clearance, and intercept are the only three variables that are statistically unlikely to provide random amounts of variance to the linear model. 
+
+When an intercept is statistically significant, it means there are other variables and factors that contribute to the variation in mpg that have not been included in our model. These variables may or may not be within our dataset and may still need to be collected or observed.
+
+###########################################################################
+# PART2 of challenge
+## Suspension Coil Summary
+###########################################################################
+summary statistics table for the suspension coil’s pounds-per-inch continuous variable.
+
+1. Summary stats for PSI in the dataset are as follows:
+
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1452    1498    1500    1499    1501    1542 
+
+2. Variance is 62.29356
+
+3. Standard Deviation is 7.892627
+
+Observations:
+
+- The Mean and Median are very close together which means that the data set has a symmetrical distribution
+- The IQR of the dataset is: 3 PSI. From 1498 (1st Quartile) to 1501 (3rd Quartile) lie 50% of the datapoints of the given dataset
+- The variance is much below the threshold of 100 pounds per inch design specification set by the manufacturer
+- Since the variance of the PSI data is 62.29356, the design speci??cations for the MechaCar suspension coils that the variance of the suspension coils must not exceed 100 pounds per inch, are met
+
+###########################################################################
+# PART3 of challenge
+## Suspension Coil T-Test
+###########################################################################
+
+The requirement is to perform a T-test on the suspension coil data determine if the suspension coil’s pound-per-inch results are statistically different from the mean population results of 1,500 pounds per inch.
+
+The assumptions about the dataset to run a T-test are:
+1.) The input data is numerical and continuous
+2.) The sample data was selected randomly from its population data
+3.) The sample size is reasonably large
+4.) The variance of the input data should be very similar
+
+Note: One of the assumptions that 'The input data is considered to be normally distributed' is not true as observed in the resuts of the Shapiro-Wilk normality test performed on PSI. P-value is less than .05
+
+W = 0.60984, p-value < 2.2e-16
+
+OBSERVATIONS:
+
+1.) We have performed One-sample T-test. The one-sample t-test is used to assert if there is a statistical difference between the means of a sample dataset and hypothesized, potential population dataset
+2.) The given mu (mean of the population dataset) is 1500
+3.) T-test results:
+
+t = -1.8931, df = 149, p-value = 0.06028
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+ 1497.507 1500.053
+sample estimates:
+mean of x 
+  1498.78 
+
+4.) Assuming our significance level was the common 0.05 percent, our p-value is above our significance level. Therefore, we do not have sufficient evidence to reject the null hypothesis, and we would state that there is no statistical difference between the mean of the sample dataset and the population mean
+
+###########################################################################
+# PART4 of challenge
+## Design Your Own Study
+###########################################################################
+There are many factors that customers consider in the car buying process some key ones are: Price, Fuel Economy (mpg), Durability/reliability, safety, affordability, driving comfort, driving performance etc.
+
+Each of the above are defined by / consist of multiple other factors, such as, a car's safety rating is governed by many features such as:
+- Rear view camera
+- Right Side view camera
+- Automatic emergency braking
+- Forward collision warning
+- Rear cross traffic warning
+
+Performance is made up of a number of factors including:
+- Engine Horsepower (KW/rpm)
+- Torque (nm/rpm)
+- Vehicle Weight
+- Vehicle Height
+- Acceleration (0-60 mph times, usually): Car acceleration capability
+
+Comfort is driven by Cargo Capacity / Volume (cu.ft.)
+
+Some of the factors that we would like to analyze in this study are:
+- Price
+- Fuel Economy (mpg)
+- Engine Horsepower (KW/rpm)
+- Torque (nm/rpm)
+- Vehicle Weight
+- Vehicle Height
+- Acceleration (0-60 mph times, usually): Car acceleration capability
+- Cargo Capacity / Volume (cu.ft.)
+
+All of the above measures are numeric, and continuous measures
+
+The dependent variable that we will analyze is the Annual Car Sales Volume
+
+QUESTION: Can this model predict Annual Sales Volume effectively? How does the predicted sales for MechaCar, using the regression model,  compare with competitor sales?
+
+Null Hypothesis (H0) : The slope of the linear model is zero, or m = 0. That there is no significant linear relationship, and the dependent value would be determined by random chance and error. Therefore, our linear model would be a flat line with a slope of 0.
+
+Alternate Hypothesis (Ha) : The slope of the linear model is not zero, or m ? 0. The chosen independent variables are significant and are statistically unlikely to provide random amounts of variance to the linear model. 
+
+The test that we will perform is MULTIPLE LINEAR REGRESSION
+
+Given the statistical test and the chosen dependent and independent variables we will collect the following data for the competitor cars:
+
+- Car Brand
+- Car Model
+- Annual Sales Volume
+- Price
+- Fuel Economy (mpg)
+- Engine Horsepower (KW/rpm)
+- Torque (nm/rpm)
+- Vehicle Weight (pounds)
+- Vehicle Size (Length)
+- Acceleration (0-60 mph times)
+- Cargo Capacity / Volume (cu.ft.)
